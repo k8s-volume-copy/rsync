@@ -1,1 +1,1 @@
-# rsync-client
+Containerize image of rsync daemon and client.

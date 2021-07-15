@@ -3,12 +3,13 @@ kind: Pod
 metadata:
   name: rsync-client
   labels:
-    kvclone.io/role: rsync-client
     kvclone.io/name: rsync-client
+    kvclone.io/app: rsync-client
+    kvclone.io/role: rsync-client
 spec:
   containers:
   - name: rsync-client
-    image: ghcr.io/kvcopy/rsync-client
+    image: ghcr.io/kvclone/rsync-client
     command:
     - rsync
     args:

@@ -1,4 +1,4 @@
-name: build and push image
+name: build and push images
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
     - created
 
 jobs:
-  build-and-push-image:
+  build-and-push-images:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -30,4 +30,4 @@ jobs:
         password: ${{ secrets.GHCR_TOKEN }}
 
     - name: Build & Push Image
-      run: make push-image
+      run: make push-images
