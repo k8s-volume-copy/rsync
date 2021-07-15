@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rsync-client
+  labels:
+    kvclone.io/role: rsync-client
+    kvclone.io/name: rsync-client
+spec:
+  containers:
+  - name: rsync-client
+    image: ghcr.io/kvcopy/rsync-client
+    command:
+    - rsync
+    args:
+    - "-rv"
+    - "rsync://$(RSYNC_USERNAME)@rsync-daemon:873/data"
+    - "/data"
+    env:
+    - name: RSYNC_USERNAME
+      value: user
+    - name: RSYNC_PASSWORD
+      value: pass
+    volumeMounts:
+    - mountPath: /data
+      name: data
+  volumes:
+  - name: data
+    emptyDir: {}
+  restartPolicy: Never
