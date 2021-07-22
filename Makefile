@@ -1,4 +1,4 @@
-DOCKER_USERNAME ?= kvclone
+DOCKER_USERNAME ?= k8s-volume-copy
 LATEST_TAG ?= ci
 IMAGE_TAG ?= $(shell git rev-parse --short HEAD)
 

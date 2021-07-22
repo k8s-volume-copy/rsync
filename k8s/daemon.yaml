@@ -3,13 +3,13 @@ kind: Pod
 metadata:
   name: rsync-daemon
   labels:
-    kvclone.io/name: rsync-daemon
-    kvclone.io/app: rsync-daemon
-    kvclone.io/role: rsync-daemon
+    demo.io/name: rsync-daemon
+    demo.io/app: rsync-daemon
+    demo.io/role: rsync-daemon
 spec:
   containers:
   - name: rsync-daemon
-    image: ghcr.io/kvclone/rsync-daemon
+    image: ghcr.io/k8s-volume-copy/rsync-daemon
     env:
     - name: RSYNC_USERNAME
       value: user
@@ -36,24 +36,24 @@ kind: Service
 metadata:
   name: rsync-daemon
   labels:
-    kvclone.io/name: rsync-daemon
-    kvclone.io/role: rsync-daemon
+    demo.io/name: rsync-daemon
+    demo.io/role: rsync-daemon
 spec:
   ports:
   - port: 873
     protocol: TCP
   selector:
-    kvclone.io/role: rsync-daemon
-    kvclone.io/name: rsync-daemon
-    kvclone.io/app: rsync-daemon
+    demo.io/role: rsync-daemon
+    demo.io/name: rsync-daemon
+    demo.io/app: rsync-daemon
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: rsync-daemon.conf
   labels:
-    kvclone.io/name: rsync-daemon
-    kvclone.io/role: rsync-daemon
+    demo.io/name: rsync-daemon
+    demo.io/role: rsync-daemon
 data:
   rsyncd.conf: |
     # /etc/rsyncd.conf
